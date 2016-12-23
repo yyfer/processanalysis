@@ -1,0 +1,453 @@
+@charset "UTF-8";
+/**
+ * Created by yufan on 2016/12/15.
+ */
+
+$header-height: 60px;
+$nav-width: 150px;
+$nav-font-size: 16px;
+$nav-color: #31c193;
+$nav-hover-color: #536367;
+$nav-icon-color: #98aaaf;
+$nav-item-height: 25px;
+$nav-bg-color: #39474b;
+
+body{
+  background: #e7eff4;
+  color: #39474b;
+  font-size: 12px;
+  font-family: "Lantinghei SC","Open Sans","Lucida Grande",Helvetica,STheiti,Verdana,"microsoft yahei","simsun",Geneva,sans-serif;
+}
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.clear{
+  clear: both;
+  height: 1px;
+}
+
+.header{
+  //variables
+  $title-font-size: 24px;
+  $title-margin: 25px;
+  $title-icon-margin: 5px;
+  $title-color: white;
+  $menu-font-size: 14px;
+  $menu-margin: 25px;
+  $menu-color: #a5bcc2;
+  $menu-hover-color: #31c193;
+  $menu-block-color: white;
+  $menu-width: 80px;
+  $fy-panel-big-width: 525px;
+  $fy-panel-middle-width: 180px;
+  $fy-panel-small-width: 220px;
+  //common
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+  background: url("../images/header-bg-2.png") repeat 0 0;
+  z-index: 200;
+  //logo
+  span.logo{
+    position: relative;
+    display: inline-block;
+    font-size: $title-font-size;
+    line-height: $header-height;
+    color: $title-color;
+    margin: 0 0 0 $title-margin;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    i{
+      margin: 0 $title-icon-margin;
+    }
+  }
+  //top-menu
+  ul.top-menu{
+    position: relative;
+    float: right;
+    height: $header-height;
+    margin: 0 $menu-margin 0 0;
+    color: $menu-color;
+    list-style: none;
+    &>li{
+      position: relative;
+      float: left;
+      height: $header-height;
+      width: $menu-width;
+      &:hover {
+        color: $menu-hover-color;
+        background: url("../images/hover-bg-2.png") repeat 0 0;
+      }
+      &:hover ul.fy-block{
+        display: block;
+      }
+      &>a{
+        display: inline-block;
+        height: 100%;
+        padding: 0 10px;
+        text-align: center;
+        &:hover{
+          cursor: pointer;
+        }
+        i{
+          font-size: $menu-font-size + 2;
+          margin: ($header-height - 2*$menu-font-size - 10)/2 auto 5px;
+        }
+        span{
+          display: inline-block;
+          font-size: $menu-font-size;
+        }
+      }
+
+      ul.fy-block{
+        $gap-size: 10px;
+
+        display: none;
+        position: absolute;
+        top: $header-height - 1;
+        padding: $gap-size;
+        background: url("../images/menu-block-bg.png")  repeat 0 0;
+        font-size: $menu-font-size;
+        color: $menu-block-color;
+        border-radius: 4px 0 4px 4px;
+        &.big{
+          left: $menu-width - $fy-panel-big-width - $gap-size*2;
+          width: $fy-panel-big-width;
+        }
+        &.middle{
+          left: $menu-width - $fy-panel-middle-width - $gap-size*2;
+          width: $fy-panel-middle-width;
+        }
+        &.small{
+          left: $menu-width - $fy-panel-small-width - $gap-size*2;
+          width: $fy-panel-small-width;
+        }
+        &>li{
+          float: left;
+          padding: $gap-size/3 $gap-size;
+        }
+        li.active>a{
+          color: $menu-hover-color;
+        }
+        li a:hover{
+          cursor: pointer;
+          color: $menu-hover-color;
+        }
+        li.child{
+          ul{
+            padding: $gap-size/3 0;
+            li{
+              padding: $gap-size/3 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.main{
+  $table-bg-color: #85a4ad;
+  position: relative;
+  //loading
+  &.refresh{
+    div.loading{
+      display:  block !important;
+    }
+  }
+  div.loading{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: $header-height;
+    left: $nav-width;
+    z-index: 110;
+    background-color: black;
+    opacity: 0.9;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    i{
+      position: absolute;
+      top: -$header-height;
+      left: -$header-height;
+      width: 100%;
+      height: 100%;
+      background: url("../images/cube.gif") no-repeat center center;
+    }
+  }
+  .left-side{
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    font-size: $nav-font-size;
+    color: $nav-color;
+    width: $nav-width;
+    background-color: $nav-bg-color;
+    overflow-y: auto;
+    z-index: 200;
+    .nav{
+      display: none;
+      position: relative;
+      padding: 10px 0;
+      ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      li.active>a{
+        background-color: #536367;
+      }
+      li.nav-item{
+        a{
+          position: relative;
+          display: block;
+          padding: 5px 5px;
+          margin: 5px 0;
+          &:hover{
+            cursor: pointer;
+            background-color: $nav-hover-color;
+          }
+        }
+        &>a{
+          height: $nav-item-height;
+          line-height: $nav-item-height;
+          i{
+            font-size: $nav-font-size - 2;
+            color: $nav-icon-color;
+            margin: 0 10px 0 15px;
+          }
+        }
+      }
+      li.child{
+        &>ul{
+          display: none;
+        }
+        &.unfold>ul{
+          display: block;
+        }
+        //&:hover>ul{
+        //  display: block;
+        //}
+        &>a:hover{
+          background-color: $nav-bg-color !important;
+        }
+        li.child-item{
+          font-size: $nav-font-size - 2;
+          a{
+            height: $nav-item-height - 2;
+            line-height: $nav-item-height - 2;
+          }
+          i{
+            font-size: $nav-font-size - 6;
+            color: $nav-icon-color;
+            margin: 0 10px 0 23px;
+          }
+        }
+      }
+    }
+  }
+  .right-side{
+    $min-width: 850px;
+    $min-height: 450px;
+    $gap-size: 10px;
+    $condition-height: 45px;
+    $condition-font-size: 16px;
+    $node-width: 100px;
+    $node-height: 60px;
+    $node-font-size: 18px;
+    $table-width: 250px;
+    $table-font-size: 14px;
+    $table-min-height: 300px;
+    $chart-min-width: $min-width - $table-width - $gap-size*6;
+    $chart-min-height: 650px;
+
+    position: relative;
+    margin: $header-height 0 0 $nav-width;
+    padding: $gap-size;
+    min-width: $min-width;
+    min-height: $min-height;
+    .content{
+      position: relative;
+      min-height: $min-height;
+      background-color: white;
+      border-radius: 4px;
+      padding: $gap-size;
+      .condition{
+        height: $condition-height;
+        font-size: $condition-font-size;
+        line-height: $condition-height;
+        padding: 0 $gap-size;
+        span{
+          font-weight: 900;
+          margin: 0 $gap-size;
+        }
+      }
+      .break{
+        background: url("../images/break-line.png") repeat-x 0 0;
+        margin: 0 $gap-size;
+        height: 2px;
+      }
+      .lcjd{
+        .node_block{
+          position: relative;
+          height: $node-height + $gap-size*4;
+          font-size: $node-font-size;
+          color: white;
+          padding: $gap-size $gap-size 0 $gap-size;
+          ul{
+            position: relative;
+            height: $node-height;
+            width: $node-width*6 + $gap-size*2*6;
+            list-style: none;
+            padding: 0;
+            margin: $gap-size*2 auto;
+            li.node{
+              position: relative;
+              float: left;
+              width: $node-width;
+              height: $node-height;
+              margin: 0 $gap-size;
+              text-align: center;
+              span{
+                position: relative;
+                display: block;
+                margin: 10px 0 -7px 0;
+              }
+              i{
+                position: absolute;
+                top: $node-height/2 - 10px;
+                left: $node-width + 2px;
+                color: #809196;
+              }
+              &:hover{
+                cursor: pointer;
+                background: url("../images/node-hover.png") repeat 0 0;
+              }
+              &.bg_1{
+                background-color: #4ed8e8;
+              }
+              &.bg_2{
+                background-color: #9faeec;
+              }
+              &.bg_3{
+                background-color: #6cc5fd;
+              }
+              &.bg_4{
+                background-color: #ee9d6f;
+              }
+              &.bg_5{
+                background-color: #d49ead;
+              }
+              &.bg_6{
+                background-color: #91b8dc;
+              }
+            }
+          }
+        }
+        .chart{
+          position: relative;
+          margin-top: $gap-size;
+          margin-right: $table-width + $gap-size*4;
+          min-width: $chart-min-width;
+          min-height: $chart-min-height;
+          #stack-bar{
+            position: relative;
+            height: $chart-min-height;
+          }
+        }
+        .table{
+          div.scroll{
+            position: fixed !important;
+            top: $header-height - $gap-size;
+            right: $gap-size*2;
+          }
+          div.container{
+            position: relative;
+            float: right;
+            width: $table-width;
+            min-height: $table-min-height;
+            padding: $gap-size;
+            margin: $gap-size $gap-size 0 0;
+            font-size: $table-font-size;
+            color: white;
+            border-radius: 4px;
+            background-color: $table-bg-color;
+          }
+          ul{
+            height: 25px;
+            li{
+              position: relative;
+              float: left;
+              font-weight: 900;
+              padding: 0 $gap-size/3;
+              height: 25px;
+              line-height: 25px;
+              z-index: 100;
+              &.active{
+                border-top:1px solid grey;
+                border-left:1px solid grey;
+                border-right:1px solid grey;
+                color: #165a44;
+                background: $table-bg-color;
+              }
+              &:hover{
+                cursor: pointer;
+                color: #165a44;
+                background: $table-bg-color;
+              }
+            }
+          }
+          .tab{
+            display: none;
+            position: relative;
+            width: $table-width - $gap-size*2;
+            padding: $gap-size/2 $gap-size;
+            border-top: 1px solid grey;
+            &.active{
+              display: block;
+            }
+            table{
+              width: 100%;
+              text-align: center;
+              border-collapse: collapse;
+              thead th{
+                width: 33.3333%;
+              }
+              tbody>tr{
+                border-top: 1px solid grey;
+
+                &:hover{
+                  cursor: pointer;
+                  background-color: grey;
+                }
+                &.odd{
+                }
+                &.even{
+                }
+              }
+            }
+          }
+        }
+      }
+      .lcfx,.sxfx{
+        position: relative;
+        padding: $gap-size;
+        margin-top: $gap-size;
+        .chart{
+          position: relative;
+          float: left;
+          width: 50%;
+          height: $min-height;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}

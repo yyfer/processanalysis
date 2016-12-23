@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>审判流程分析预警系统</title>
+    <link rel="stylesheet" type="text/css" href="thirdparty/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="thirdparty/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+    <div class="header">
+        <span class="logo"><i class="fa fa-ravelry" aria-hidden="true"></i>审判流程分析预警系统</span>
+        <ul class="top-menu">
+            <!--<li data-fydm="1200"><a><i class="fa fa-calendar" aria-hidden="true"></i><span>选择时间</span></a></li>-->
+            <li>
+                <a><i class="fa fa-users" aria-hidden="true"></i><span>切换法院</span></a>
+                <ul class="fy-block big">
+                    <li data-fydm="1200"><a>全市</a></li>
+                    <li data-fydm="120000 200" class="active"><a>天津市高级人民法院</a></li>
+                    <li data-fydm="960200 230"><a>天津市海事法院</a></li>
+                    <li data-fydm="920103 132"><a>天津市铁路运输法院</a></li>
+                    <div class="clear"></div>
+                    <li data-fydm="120100 210" class="child"><a><i></i>天津市第一中级人民法院</a>
+                        <ul>
+                            <li data-fydm="120101 211"><a>天津市和平区人民法院</a></li>
+                            <li data-fydm="120104 212"><a>天津市南开区人民法院</a></li>
+                            <li data-fydm="120105 213"><a>天津市河北区人民法院</a></li>
+                            <li data-fydm="120106 214"><a>天津市红桥区人民法院</a></li>
+                            <li data-fydm="120107 215"><a>天津市西青区人民法院</a></li>
+                            <li data-fydm="120108 216"><a>天津市北辰区人民法院</a></li>
+                            <li data-fydm="120222 217"><a>天津市武清区人民法院</a></li>
+                            <li data-fydm="120223 218"><a>天津市静海区人民法院</a></li>
+                            <li data-fydm="120224 219"><a>天津市宝坻区人民法院</a></li>
+                            <li data-fydm="120225 21A"><a>天津市蓟州区人民法院</a></li>
+                        </ul>
+                    </li>
+                    <li data-fydm="120200 220" class="child"><i></i><a>天津市第二中级人民法院</a>
+                        <ul>
+                            <li data-fydm="120202 221"><a>天津市河东区人民法院</a></li>
+                            <li data-fydm="120203 222"><a>天津市河西区人民法院</a></li>
+                            <li data-fydm="120207 226"><a>天津市东丽区人民法院</a></li>
+                            <li data-fydm="120208 227"><a>天津市津南区人民法院</a></li>
+                            <li data-fydm="120221 228"><a>天津市宁河区人民法院</a></li>
+                        </ul>
+                    </li>
+                    <li data-fydm="120242 22A" class="child"><i></i><a>天津市滨海新区人民法院</a>
+                        <ul>
+                            <li data-fydm="120204 223"><a>天津市塘沽区人民法院</a></li>
+                            <li data-fydm="120205 224"><a>天津市汉沽区人民法院</a></li>
+                            <li data-fydm="120206 225"><a>天津市大港区人民法院</a></li>
+                            <li data-fydm="120241 229"><a>天津市功能审判区法院</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <input type="text" id="fydm" value="120000 200" hidden />
+        <input type="text" id="fymc" value="天津市高级人民法院" hidden />
+        <input type="text" id="opttype" value="1" hidden />
+        <div class="loading"><i></i></div>
+        <div class="left-side">
+            <div class="nav">
+            <ul>
+                <li class="nav-item" data-type="1"><a><i class="fa fa-superpowers" aria-hidden="true"></i>流程节点</a></li>
+                <li class="nav-item child unfold" data-type="2">
+                    <a><i class="fa fa-bar-chart" aria-hidden="true"></i>流程分析<i class="fa fa-caret-down"></i></a>
+                    <ul>
+                        <li class="child-item" data-type="21"><a><i class="fa fa-chevron-right" aria-hidden="true"></i>立案</a></li>
+                        <li class="child-item" data-type="22"><a><i class="fa fa-chevron-right" aria-hidden="true"></i>分案</a></li>
+                        <li class="child-item" data-type="23"><a><i class="fa fa-chevron-right" aria-hidden="true"></i>庭前准备</a></li>
+                        <li class="child-item" data-type="24"><a><i class="fa fa-chevron-right" aria-hidden="true"></i>审理</a></li>
+                        <li class="child-item" data-type="25"><a><i class="fa fa-chevron-right" aria-hidden="true"></i>报结</a></li>
+                        <!--<li class="child-item"data-type="26"><a><i class="fa fa-chevron-right" aria-hidden="true"></i>结案</a></li>-->
+                    </ul>
+                </li>
+                <li class="nav-item"data-type="3"><a><i class="fa fa-circle-o-notch" aria-hidden="true"></i>审限分析</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="right-side">
+            <div class="content">
+                <div class="condition">当月截止目前，<span id="rs_fymc">天津市高级人民法院</span>情况</div>
+                <div class="break"></div>
+                <div class="lcjd"></div>
+                <div class="lcfx"></div>
+                <div class="sxfx"></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="thirdparty/js/echarts-2.2.7/echarts.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "bitwise": false,
+  "curly":true,
+  "eqeqeq":false,
+  "freeze": true,
+  "funcscope": true,
+  "futurehostile": true,
+  "globals": {
+    "define": false,
+    "module": true,
+    "export": true,
+    "console": false
+  },
+  "latedef": true,
+  "maxerr": 50,
+  "nonbsp": true,
+  "nonew": true,
+  "notypeof": true,
+  "shadow": "inner",
+  "strict": false,
+  "undef": true,
+  "unused": true,
+  "browser": true
+}
